@@ -10,29 +10,39 @@
 # <bitbar.dependencies>python</bitbar.dependencies>
 # <bitbar.abouturl>https://github.com/albinhubsch/BitBar-Integrity-VPN-Plugin</bitbar.abouturl>
 
+# Imports
 import urllib2
 
+# Vars
 url = "https://integrity.st/"
-bad_match = "You are not connecting via Integrity right now!"
-good_match = ""
+match = {'good': '',
+			'bad': "You are not connecting via Integrity right now!"}
 
-bad_icon = '⛔'
-good_icon = '😎'
-msg_short = ''
-msg_long = ''
+icon = {'good': "👻",
+			'bad': "🚫"}
 
-request = urllib2.urlopen(url).read()
+message = {'short': '',
+			'long': ''}
 
-if bad_match in request:
-	msg_short = bad_icon
-	msg_long = 'You are not connecting via Integrity right now!'
-elif good_match in request:
-	msg_short = good_icon
-	msg_long = 'Awesome! You\'re surfing like them!'
+# Send request to Integrity.st
+try:
+	request = urllib2.urlopen(url, timeout=4).read()
+except Exception, e:
+	print 'Error: '+e.message
+	exit()
+
+# Check result
+if match['bad'] in request:
+	message['short'] = icon['bad']
+	message['long'] = match['bad']
+elif match['good'] in request:
+	message['short'] = icon['good']
+	message['long'] = match['good']
 else:
-	msg_short = ' Error'
-	msg_long = 'Something went wrong fetching Integrity status'
+	message['short'] = ' Error'
+	message['long'] = 'Something went wrong fetching Integrity status'
 
-print 'VPN:' + msg_short
+# Print results
+print 'Vpn:' + message['short']
 print '---'
-print msg_long + '| href=https://integrity.st/'
+print message['long'] + '| href=https://integrity.st/'
