@@ -8,7 +8,7 @@
 # <bitbar.desc>Short description of what your plugin does.</bitbar.desc>
 # <bitbar.image> ...image </bitbar.image>
 # <bitbar.dependencies>python</bitbar.dependencies>
-# <bitbar.abouturl>http://url-to-about.com/</bitbar.abouturl>
+# <bitbar.abouturl>https://github.com/albinhubsch/BitBar-Integrity-VPN-Plugin</bitbar.abouturl>
 
 import urllib2
 
