@@ -15,7 +15,7 @@ import urllib2
 
 # Vars
 url = "https://integrity.st/"
-match = {'good': '',
+match = {'good': 'Hey, you are connecting via Integrity right now!',
 			'bad': "You are not connecting via Integrity right now!"}
 
 icon = {'good': "👻",
