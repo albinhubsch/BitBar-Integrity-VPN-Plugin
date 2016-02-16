@@ -43,6 +43,6 @@ else:
 	message['long'] = 'Something went wrong fetching Integrity status'
 
 # Print results
-print 'Vpn:' + message['short']
+print message['short']
 print '---'
 print message['long'] + '| href=https://integrity.st/'
